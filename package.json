@@ -1,6 +1,9 @@
 {
   "name": "node-server-bench",
   "type": "module",
+  "scripts": {
+    "start": "node src/index.js"
+  },
   "dependencies": {
     "@hono/node-server": "^1.13.6",
     "h3": "^1.13.0",

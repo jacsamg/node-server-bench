@@ -46,18 +46,20 @@ async function handler(req, res) {
   res.end('Hello world!');
 }
 
-const endpoint = createEndpoint(
-  createMiddleware(mw1),
-  createMiddleware(mw2),
-  createHandler(handler),
-);
+export function server() {
+  const endpoint = createEndpoint(
+    createMiddleware(mw1),
+    createMiddleware(mw2),
+    createHandler(handler),
+  );
 
-const app = createServer(async (req, res) => {
-  if (req.method === 'GET', req.url === '/hello') {
-    await endpoint(req, res);
-  }
-});
+  const app = createServer(async (req, res) => {
+    if (req.method === 'GET', req.url === '/hello') {
+      await endpoint(req, res);
+    }
+  });
 
-app.listen(3000, () => {
-  console.log('vanilla-05 3000');
-});
+  app.listen(3003, () => {
+    console.log('vanilla-02 3003');
+  });
+}

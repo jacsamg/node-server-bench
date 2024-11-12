@@ -1,8 +1,6 @@
 import { serve } from '@hono/node-server';
 import { Hono } from 'hono';
 
-const app = new Hono();
-
 async function mw1(c, next) {
   await next();
 }
@@ -17,8 +15,12 @@ async function handler(c) {
   return c.text('Hello world!');
 };
 
-app.get('/hello', mw1, mw2, handler);
+export function server() {
+  const app = new Hono();
 
-serve(app, () => {
-  console.log('hono 3000');
-});
+  app.get('/hello', mw1, mw2, handler);
+
+  serve(app, () => {
+    console.log('hono 3000');
+  });
+}

@@ -1,20 +1,22 @@
 import { createServer } from "node:http";
 import { createApp, createRouter, defineEventHandler, toNodeListener } from "h3";
 
-const app = createApp();
-const router = createRouter();
+export function server() {
+  const app = createApp();
+  const router = createRouter();
 
-router.get(
-  "/hello",
-  defineEventHandler(async (event) => {
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    return "Hello world!";
-  })
-);
+  router.get(
+    "/hello",
+    defineEventHandler(async (event) => {
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      return "Hello world!";
+    })
+  );
 
-app.use(router);
+  app.use(router);
 
-createServer(toNodeListener(app)).listen(3000, () => {
-  console.log('h3 3000');
-});
+  createServer(toNodeListener(app)).listen(3001, () => {
+    console.log('h3 3001');
+  });
+}

@@ -15,12 +15,10 @@ async function handler(c) {
   return c.text('Hello world!');
 };
 
-export function server() {
-  const app = new Hono();
+const app = new Hono();
 
-  app.get('/hello', mw1, mw2, handler);
+app.get('/hello', mw1, mw2, handler);
 
-  serve(app, () => {
-    console.log('hono 3000');
-  });
-}
+serve(app, () => {
+  console.log('hono 3000');
+});

@@ -1,0 +1,12 @@
+{
+  "name": "node-server-bench",
+  "type": "module",
+  "dependencies": {
+    "@hono/node-server": "^1.13.6",
+    "h3": "^1.13.0",
+    "hono": "^4.6.9"
+  },
+  "devDependencies": {
+    "autocannon": "^8.0.0"
+  }
+}
